@@ -82,9 +82,20 @@
         }
 
         .logo-live {
-            max-width: 180px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 20px rgba(0, 232, 0, 0.2));
+            max-width: 120px;
+            margin-bottom: 25px;
+            border-radius: 24px; /* Arredondamento solicitado */
+            background: rgba(255, 255, 255, 0.08);
+            padding: 15px;
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.5s var(--spring-bounce);
+        }
+        
+        .logo-live:hover {
+            transform: scale(1.05) rotate(2deg);
+            border-color: var(--live-accent);
         }
 
         h1 {
@@ -182,31 +193,33 @@
            ========================================= */
         .data-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             margin-top: 25px;
         }
 
         .data-point {
             background: rgba(6, 25, 42, 0.4);
-            padding: 15px;
-            border-radius: 8px;
+            padding: 20px;
+            border-radius: 12px;
             border-left: 2px solid var(--border-subtle);
         }
-        .data-label { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .data-label { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;}
         .data-value { font-size: 1rem; font-weight: 600; color: #f8fafc; display: flex; align-items: center; gap: 8px; }
 
         /* Listas Técnicas */
-        .tech-list { list-style: none; margin-top: 15px; }
+        .tech-list { list-style: none; margin-top: 5px; }
         .tech-list li {
             display: flex;
             align-items: flex-start;
             gap: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-size: 0.9rem;
             color: #cbd5e1;
+            line-height: 1.4;
         }
-        .tech-list li i { color: var(--live-accent); min-width: 16px; margin-top: 4px; }
+        .tech-list li i { color: var(--live-accent); min-width: 16px; margin-top: 3px; }
+        .tech-list strong { color: #fff; font-weight: 600; }
 
         /* =========================================
            7. TABELA COMPARATIVA (GLASS TABLE)
@@ -266,7 +279,7 @@
                         </div>
                         <h2 style="font-size: 1.8rem; font-weight: 700; color: #fff;">Crisley Gomes Jaime</h2>
                         <p style="color: var(--live-accent); font-size: 0.9rem; font-weight: 500;">
-                            Ex-Controller & Gestor Comercial | Sênior
+                            36 anos | Ex-Controller & Gestor Comercial | Sênior
                         </p>
                     </div>
                     <div style="text-align: right;">
@@ -276,27 +289,25 @@
                 </div>
 
                 <div class="analysis-text">
-                    O único candidato com <span class="highlight">lastro executivo</span> para a promessa de "ganhos ilimitados". Enquanto os concorrentes possuem perfis de suporte ou técnico, Crisley fala a língua do <strong>Smart Money</strong>. Sua vivência na <em>Cargill</em> e <em>SJC Bioenergia</em> gerindo hedge e derivativos o qualifica para negociar com Diretores de Indústrias multinacionais, que é o alvo da Okamoto.
+                    O único candidato com <span class="highlight">lastro executivo internacional</span> para a promessa de "ganhos ilimitados". Enquanto os concorrentes possuem perfis de suporte ou técnico, Crisley fala a língua do <strong>Smart Money</strong>. Sua vivência na <em>Cereal Comércio</em> e <em>SJC Bioenergia</em> gerindo hedge e derivativos o qualifica para negociar com Diretores de Indústrias multinacionais.
                 </div>
 
                 <div class="data-grid">
                     <div class="data-point">
-                        <div class="data-label">Experiência Crítica (CV)</div>
-                        <ul class="tech-list" style="margin-top: 5px;">
-                            <li><i data-lucide="check"></i> <strong>SJC Bioenergia:</strong> Meta anual de 600k toneladas.</li>
-                            <li><i data-lucide="check"></i> <strong>Cereal Comércio:</strong> Gestão de Hedge (CBOT) e Derivativos.</li>
-                            <li><i data-lucide="check"></i> <strong>Financeiro:</strong> Domínio de NDF, Dólar BM&F e Margem.</li>
+                        <div class="data-label"><i data-lucide="briefcase"></i> Track Record de Elite</div>
+                        <ul class="tech-list">
+                            <li><i data-lucide="check-circle"></i> <strong>SJC Bioenergia:</strong> Meta anual de 600k toneladas e gestão de orçamento (Budget/Forecast).</li>
+                            <li><i data-lucide="check-circle"></i> <strong>Commodities Complexas:</strong> Operação com DDGs, WDG, Soja, Milho, Sorgo e Óleos Vegetais.</li>
+                            <li><i data-lucide="check-circle"></i> <strong>Financeiro Sênior:</strong> Domínio de NDF, Dólar BM&F, Hedge e Posição.</li>
                         </ul>
                     </div>
                     <div class="data-point">
-                        <div class="data-label">Análise de Risco x Retorno</div>
-                        <div class="data-value" style="color: var(--live-accent); margin-bottom: 5px;">
-                            <i data-lucide="trending-up"></i> Alto Potencial Financeiro
-                        </div>
-                        <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.4;">
-                            Risco: Aceite do Fixo (Mínimo). <br>
-                            Mitigação: Vender o projeto como "Empreendedorismo Corporativo" com upside real de R$ 20k+.
-                        </p>
+                        <div class="data-label"><i data-lucide="award"></i> Diferenciais de Autoridade</div>
+                        <ul class="tech-list">
+                            <li><i data-lucide="globe"></i> <strong>Internacional:</strong> Visita técnica ao Corn Belt e Bolsa de Chicago (CME Group).</li>
+                            <li><i data-lucide="shield-check"></i> <strong>Certificações:</strong> Gestão de Riscos e Mercado Futuro pela INTL FCStone.</li>
+                            <li><i data-lucide="trending-up"></i> <strong>Perfil:</strong> "Mentalidade de dono" (Citado no CV) – Alinhamento total com comissão agressiva.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -311,27 +322,28 @@
                             <i data-lucide="shield"></i> 2º Lugar (Perfil Farmer)
                         </div>
                         <h3 style="font-size: 1.4rem; font-weight: 600; color: #e2e8f0;">Paula Gonçalves Silva</h3>
-                        <p style="color: #94a3b8; font-size: 0.9rem;">Agrônoma | Compras & Suporte</p>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">26 anos | Agrônoma | Compras & Suporte</p>
                     </div>
                     <span style="font-size: 1.5rem; font-weight: 700; color: #94a3b8; opacity: 0.5;">75%</span>
                 </div>
 
                 <div class="analysis-text">
-                    Perfil sólido para <strong>Backoffice/Farmer</strong>, mas carece da agressividade "Hunter" para o modelo de comissão pura. Seu CV destaca organização (Digisat, Pedidos), não a abertura de novos mercados de alto calibre.
+                    Perfil sólido para <strong>Backoffice/Farmer</strong>, mas carece da agressividade "Hunter" para o modelo de comissão pura. Seu CV destaca organização (Digisat, Pedidos), e experiências comerciais mais brandas (suporte e geração de demanda).
                 </div>
 
                 <div class="data-grid">
                     <div class="data-point">
-                        <div class="data-label">Pontos Fortes (CV)</div>
+                        <div class="data-label"><i data-lucide="file-text"></i> Experiência Relevante</div>
                         <ul class="tech-list">
-                            <li><i data-lucide="map-pin"></i> Reside em Goiânia (Custo Zero).</li>
-                            <li><i data-lucide="file-text"></i> Organizada: Gestão de planilhas e sistemas.</li>
+                            <li><i data-lucide="map-pin"></i> <strong>Grupo Nativa:</strong> Agente de Geração de Demanda (Prospecção focada em campo).</li>
+                            <li><i data-lucide="shopping-cart"></i> <strong>Sanutri:</strong> Estágio em Vendas Internas (Gestão de estoque e caixa).</li>
+                            <li><i data-lucide="book-open"></i> <strong>Acadêmico:</strong> Pós-Graduação em Fitopatologia (Viés técnico forte).</li>
                         </ul>
                     </div>
                     <div class="data-point">
-                        <div class="data-label">Motivo do Rebaixamento</div>
+                        <div class="data-label"><i data-lucide="alert-triangle"></i> Motivo do Rebaixamento</div>
                         <p style="font-size: 0.9rem; color: #cbd5e1; margin-top: 5px;">
-                            Experiência recente em "Compras" e "Apoio". Pode não suportar a pressão de "Salário Mínimo + Meta Agressiva".
+                            O foco atual dela é "Compras" e "Gestão Financeira de Insumos". Embora organizada, não tem o lastro de negociação de grandes volumes (Milhões de Reais) que o Crisley apresenta.
                         </p>
                     </div>
                 </div>
@@ -347,13 +359,24 @@
                             <i data-lucide="x-circle"></i> Não Recomendado
                         </div>
                         <h3 style="font-size: 1.4rem; font-weight: 600; color: #cbd5e1;">Paulo Vinicius Silva Dai</h3>
-                        <p style="color: #64748b; font-size: 0.9rem;">Pesquisador | Perfil Acadêmico</p>
+                        <p style="color: #64748b; font-size: 0.9rem;">Pesquisador | Perfil Científico</p>
                     </div>
                     <span style="font-size: 1.5rem; font-weight: 700; color: var(--live-danger); opacity: 0.5;">40%</span>
                 </div>
 
                 <div class="analysis-text">
-                    Incompatibilidade de DNA. O CV é denso em termos acadêmicos ("Fitopatologia", "Ensaios", "R Statistics"). Para uma vaga comercial agressiva, o risco de desmotivação (Boreout) é crítico. Além disso, reside em Rio Verde.
+                    Incompatibilidade de DNA. O CV é denso em termos acadêmicos e ferramentas de experimentação. Para uma vaga comercial agressiva, o risco de desmotivação (Boreout) é crítico. Além disso, reside em Rio Verde.
+                </div>
+
+                <div class="data-grid">
+                    <div class="data-point">
+                        <div class="data-label"><i data-lucide="microscope"></i> Viés Técnico (Oposto ao Hunter)</div>
+                        <ul class="tech-list">
+                            <li><i data-lucide="code"></i> <strong>Ferramentas:</strong> Análise de Dados em R Statistics, ArcGIS, Operação de Drones (RPA).</li>
+                            <li><i data-lucide="flask-conical"></i> <strong>Experiência:</strong> Bayer & Desafios Agro (Foco estrito em ensaios de fungicidas e diagnósticos).</li>
+                            <li><i data-lucide="graduation-cap"></i> <strong>Formação:</strong> Mestrado em Produção Vegetal (Perfil Analítico-Científico).</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -381,16 +404,16 @@
                         <td>Júnior / Pesquisador</td>
                     </tr>
                     <tr>
-                        <td><strong>Foco Financeiro</strong></td>
-                        <td class="winner-col winner-text">Hedge, Derivativos, Margem</td>
-                        <td>Compras, Cotações</td>
-                        <td>Estatística, Ensaios</td>
+                        <td><strong>Hard Skills (CV)</strong></td>
+                        <td class="winner-col winner-text">CBOT, Hedge, Budget, Derivativos</td>
+                        <td>Digisat, Compras, Fitopatologia</td>
+                        <td>R Statistics, Drones, Ensaios</td>
                     </tr>
                     <tr>
-                        <td><strong>Fit com Multinacionais</strong></td>
-                        <td class="winner-col winner-text">Alto (Cargill, SJC)</td>
-                        <td>Médio (Revendas Locais)</td>
-                        <td>Baixo (Foco Campo)</td>
+                        <td><strong>Diferencial Extra</strong></td>
+                        <td class="winner-col winner-text">Visita Técnica Corn Belt (EUA)</td>
+                        <td>Pós em Fitopatologia</td>
+                        <td>Mestrado Acadêmico</td>
                     </tr>
                     <tr>
                         <td><strong>Localização</strong></td>
