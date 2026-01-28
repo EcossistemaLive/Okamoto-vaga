@@ -3,396 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dossiê Técnico de Candidatos - Okamoto Corretora</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Dossiê Trader - Okamoto Corretora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-
     <style>
-        :root {
-            /* Design System Live Consultoria V6.0 */
-            --live-deep: #0f172a;
-            --live-surface: #1e293b;
-            --live-glass: rgba(30, 41, 59, 0.7);
-            --live-accent: #00e800; /* Verde Live */
-            --live-accent-dim: rgba(0, 232, 0, 0.1);
-            --live-danger: #ef4444;
-            --live-warning: #f59e0b;
-            --live-text-main: #f8fafc;
-            --live-text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --glass-blur: blur(12px);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--live-deep);
-            background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 100%);
-            color: var(--live-text-main);
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            padding-bottom: 100px;
-        }
-
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-
-        /* HEADER */
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 30px;
-        }
-        .brand { color: var(--live-accent); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; font-size: 1.2rem; }
-        h1 { font-size: 2.2rem; margin: 10px 0; font-weight: 600; }
-        .subtitle { color: var(--live-text-muted); font-family: 'Merriweather', serif; font-style: italic; }
-
-        /* NAVIGATION TABS (Visual only) */
-        .nav-tabs { display: flex; gap: 10px; margin-bottom: 40px; justify-content: center; flex-wrap: wrap; }
-        .tab { 
-            padding: 10px 20px; 
-            border-radius: 50px; 
-            border: 1px solid var(--border-color); 
-            background: var(--live-surface); 
-            color: var(--live-text-muted);
-            font-size: 0.9rem;
-            display: flex; align-items: center; gap: 8px;
-        }
-        .tab.active { background: var(--live-accent-dim); color: var(--live-accent); border-color: var(--live-accent); }
-
-        /* CANDIDATE CARD */
-        .candidate-card {
-            background: var(--live-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            margin-bottom: 60px;
-            overflow: hidden;
-            position: relative;
-        }
+        :root { --bg: #0f172a; --card: #1e293b; --accent: #00e800; --text: #f8fafc; --danger: #ef4444; --warn: #f59e0b; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); padding: 40px 20px; max-width: 900px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 50px; border-bottom: 1px solid #334155; padding-bottom: 20px; }
+        .h-title { color: var(--accent); letter-spacing: 2px; text-transform: uppercase; font-size: 1.5rem; font-weight: 800; }
         
-        .card-header {
-            padding: 30px;
-            background: rgba(0,0,0,0.2);
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .candidate-info h2 { font-size: 1.8rem; margin-bottom: 5px; }
-        .candidate-role { color: var(--live-text-muted); font-size: 0.9rem; display: flex; gap: 15px; }
-        .candidate-role span { display: flex; align-items: center; gap: 5px; }
-
-        .status-badge {
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-        .status-recommended { background: var(--live-accent); color: #000; box-shadow: 0 0 15px rgba(0,232,0,0.3); }
-        .status-backup { background: var(--live-warning); color: #000; }
-        .status-rejected { background: var(--live-danger); color: #fff; }
-
-        .card-body { padding: 30px; }
-
-        /* DIAGNOSIS SECTION */
-        .diagnosis {
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(255,255,255,0.03);
-            border-left: 4px solid var(--border-color);
-            border-radius: 0 8px 8px 0;
-        }
-        .diagnosis p { font-family: 'Merriweather', serif; color: #cbd5e1; font-size: 1rem; }
-        .diagnosis strong { color: #fff; }
-
-        /* GRID LAYOUTS */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .card { background: var(--card); border-radius: 12px; padding: 25px; margin-bottom: 30px; border: 1px solid #334155; position: relative; }
+        .card.top-pick { border: 2px solid var(--accent); box-shadow: 0 0 20px rgba(0,232,0,0.1); }
         
-        @media (max-width: 768px) {
-            .grid-2 { grid-template-columns: 1fr; }
-            .card-header { flex-direction: column; align-items: flex-start; }
-        }
+        .badge { padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 10px; }
+        .b-rec { background: var(--accent); color: #000; }
+        .b-risk { background: var(--warn); color: #000; }
+        .b-no { background: var(--danger); color: #fff; }
 
-        .data-box h3 { 
-            font-size: 0.9rem; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            color: var(--live-text-muted); 
-            margin-bottom: 15px; 
-            display: flex; align-items: center; gap: 8px;
-        }
-
-        /* LISTS */
-        .bullet-list li {
-            list-style: none;
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-            font-size: 0.95rem;
-        }
-        .bullet-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        /* SCORE BARS */
-        .skill-row { margin-bottom: 12px; }
-        .skill-label { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 5px; }
-        .bar-bg { background: rgba(255,255,255,0.1); height: 6px; border-radius: 3px; overflow: hidden; }
-        .bar-fill { height: 100%; border-radius: 3px; }
-
-        /* COMPARISON TABLE */
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background: var(--live-surface);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .comparison-table th, .comparison-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .comparison-table th { background: rgba(0,0,0,0.3); color: var(--live-text-muted); font-size: 0.85rem; text-transform: uppercase; }
-        .comparison-table td { font-size: 0.95rem; }
-        .comparison-table tr:last-child td { border-bottom: none; }
+        .flex-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .role { color: #94a3b8; font-size: 0.9rem; }
         
-        .winner-col { background: rgba(0, 232, 0, 0.05); border-left: 1px solid var(--live-accent-dim); border-right: 1px solid var(--live-accent-dim); }
-
+        .analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+        @media(max-width: 700px) { .analysis-grid { grid-template-columns: 1fr; } }
+        
+        .metric-box { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; }
+        .metric-title { font-size: 0.8rem; color: #94a3b8; margin-bottom: 5px; }
+        .metric-val { font-size: 1.1rem; font-weight: 600; }
+        
+        .list-check li { list-style: none; margin-bottom: 8px; padding-left: 20px; position: relative; font-size: 0.9rem; }
+        .list-check li::before { content: "✓"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
+        
+        .alert-box { background: rgba(245, 158, 11, 0.1); border-left: 4px solid var(--warn); padding: 15px; margin-top: 20px; font-size: 0.9rem; color: #e2e8f0; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <header>
-            <div class="brand">Live Consultoria • R&S Intelligence</div>
-            <h1>Dossiê Técnico de Candidatos</h1>
-            <p class="subtitle">Processo Seletivo: Okamoto Corretora (Operador Comercial)</p>
-        </header>
-
-        <div class="nav-tabs">
-            <div class="tab active"><i data-lucide="trophy"></i> 1. Paula G. Silva</div>
-            <div class="tab"><i data-lucide="user"></i> 2. Paulo V. Dai</div>
-            <div class="tab"><i data-lucide="alert-triangle"></i> 3. Crisley Jaime</div>
-        </div>
-
-        <div class="candidate-card" style="border-color: var(--live-accent);">
-            <div class="card-header">
-                <div class="candidate-info">
-                    <h2 style="color: var(--live-accent);">Paula Gonçalves Silva</h2>
-                    <div class="candidate-role">
-                        <span><i data-lucide="map-pin" size="16"></i> Goiânia - GO (Local)</span>
-                        <span><i data-lucide="briefcase" size="16"></i> Agrônoma / Compras</span>
-                    </div>
-                </div>
-                <div class="status-badge status-recommended">
-                    <i data-lucide="check-circle" style="vertical-align: middle; margin-right:5px;" size="16"></i> Recomendada
-                </div>
-            </div>
-
-            <div class="card-body">
-                <div class="diagnosis" style="border-color: var(--live-accent);">
-                    <strong>Análise do Consultor:</strong> O perfil de maior aderência ("Luva"). Paula combina a formação técnica (Agronomia) com a experiência prática de <strong>backoffice comercial</strong> (compras, sistemas, suporte). O fato de já residir em Goiânia e ter familiaridade com sistemas de gestão (Digisat) elimina a curva de aprendizado operacional.
-                </div>
-
-                <div class="grid-2">
-                    <div class="data-box">
-                        <h3><i data-lucide="database"></i> Extração de Experiência (CV)</h3>
-                        <ul class="bullet-list" style="--accent-color: var(--live-accent);">
-                            <li><strong>Líder de Compras (Atual):</strong> Gestão financeira e negociação direta com fornecedores.</li>
-                            <li><strong>B2 Agência/AFB:</strong> Atuação híbrida em produção e suporte, lidando com pressão e prazos.</li>
-                            <li><strong>Sistema Digisat:</strong> Experiência comprovada em input de dados e gestão de estoque.</li>
-                            <li><strong>Farmer Skill:</strong> Perfil voltado para manutenção, organização e suporte (não hunter agressivo).</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="data-box">
-                        <h3><i data-lucide="bar-chart-2"></i> Scorecard de Aderência</h3>
-                        
-                        <div class="skill-row">
-                            <div class="skill-label"><span>Fit Operacional (Suporte/Rotina)</span> <span>95%</span></div>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 95%; background: var(--live-accent);"></div></div>
-                        </div>
-                        <div class="skill-row">
-                            <div class="skill-label"><span>Conhecimento Técnico (Agro)</span> <span>90%</span></div>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 90%; background: var(--live-accent);"></div></div>
-                        </div>
-                        <div class="skill-row">
-                            <div class="skill-label"><span>Localização (Custo Zero)</span> <span>100%</span></div>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 100%; background: var(--live-accent);"></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="candidate-card" style="border-color: var(--live-warning);">
-            <div class="card-header">
-                <div class="candidate-info">
-                    <h2>Paulo Vinicius Silva Dai</h2>
-                    <div class="candidate-role">
-                        <span><i data-lucide="map-pin" size="16"></i> Rio Verde - GO (Requer Mudança)</span>
-                        <span><i data-lucide="flask-conical" size="16"></i> Pesquisador / Técnico</span>
-                    </div>
-                </div>
-                <div class="status-badge status-backup">
-                    <i data-lucide="pause-circle" style="vertical-align: middle; margin-right:5px;" size="16"></i> Banco de Talentos
-                </div>
-            </div>
-
-            <div class="card-body">
-                <div class="diagnosis" style="border-color: var(--live-warning);">
-                    <strong>Análise do Consultor:</strong> Excelente profissional, mas com <strong>viés técnico excessivo</strong>. Seu CV é denso em "Ensaios", "Fitopatologia" e "Diagnose". Para uma vaga burocrática/comercial, ele corre alto risco de frustração (Boreout). Além disso, a residência em Rio Verde gera custo ou instabilidade.
-                </div>
-
-                <div class="grid-2">
-                    <div class="data-box">
-                        <h3><i data-lucide="database"></i> Extração de Experiência (CV)</h3>
-                        <ul class="bullet-list" style="--accent-color: var(--live-warning);">
-                            <li><strong>Pesquisa e Campo:</strong> Foco em testes de fungicidas, cultivares e relatórios técnicos.</li>
-                            <li><strong>Acadêmico:</strong> Mestrado em Produção Vegetal (perfil analítico-científico).</li>
-                            <li><strong>Tecnologia:</strong> Operação de Drones e análise estatística em R (superqualificado tecnicamente).</li>
-                            <li><strong>Gap Comercial:</strong> Pouca evidência de rotina administrativa de escritório (cotações, pedidos).</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="data-box">
-                        <h3><i data-lucide="bar-chart-2"></i> Scorecard de Aderência</h3>
-                        
-                        <div class="skill-row">
-                            <div class="skill-label"><span>Fit Operacional</span> <span>60%</span></div>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 60%; background: var(--live-warning);"></div></div>
-                        </div>
-                        <div class="skill-row">
-                            <div class="skill-label"><span>Conhecimento Técnico (Agro)</span> <span>98%</span></div>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 98%; background: var(--live-accent);"></div></div>
-                        </div>
-                        <div class="skill-row">
-                            <div class="skill-label"><span>Localização</span> <span>50%</span></div>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 50%; background: var(--live-danger);"></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="candidate-card" style="border-color: var(--live-danger);">
-            <div class="card-header">
-                <div class="candidate-info">
-                    <h2>Crisley Gomes Jaime</h2>
-                    <div class="candidate-role">
-                        <span><i data-lucide="map-pin" size="16"></i> Rio Verde - GO</span>
-                        <span><i data-lucide="trending-up" size="16"></i> Trader Sênior / Gestor</span>
-                    </div>
-                </div>
-                <div class="status-badge status-rejected">
-                    <i data-lucide="x-circle" style="vertical-align: middle; margin-right:5px;" size="16"></i> Não Recomendado
-                </div>
-            </div>
-
-            <div class="card-body">
-                <div class="diagnosis" style="border-color: var(--live-danger);">
-                    <strong>Análise do Consultor:</strong> O clássico caso de <strong>Overqualified</strong>. Crisley é um executivo de mesa (Trader). Sua experiência envolve Hedge na CBOT, Derivativos e Gestão de Risco. Colocá-lo para "apoiar rotinas" e "lançar pedidos" é um erro estratégico que levará a turnover imediato ou custo salarial incompatível.
-                </div>
-
-                <div class="grid-2">
-                    <div class="data-box">
-                        <h3><i data-lucide="alert-triangle"></i> Desalinhamento (CV)</h3>
-                        <ul class="bullet-list" style="--accent-color: var(--live-danger);">
-                            <li><strong>Sênioridade:</strong> Gerente/Coordenador na SJC Bioenergia e Cereal Comércio.</li>
-                            <li><strong>Financeiro:</strong> Opera derivativos, NDF, Dólar BM&F e trava de câmbio.</li>
-                            <li><strong>Risco de Churn:</strong> Sairá na primeira proposta de Trader que receber.</li>
-                            <li><strong>Custo:</strong> Valor de mercado estimado 3x acima do budget de Operador de Suporte.</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="data-box">
-                        <h3><i data-lucide="bar-chart-2"></i> Scorecard de Aderência</h3>
-                        
-                        <div class="skill-row">
-                            <div class="skill-label"><span>Fit Operacional (Humildade/Rotina)</span> <span>30%</span></div>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 30%; background: var(--live-danger);"></div></div>
-                        </div>
-                        <div class="skill-row">
-                            <div class="skill-label"><span>Conhecimento Técnico (Mercado)</span> <span>100%</span></div>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 100%; background: var(--live-accent);"></div></div>
-                        </div>
-                        <div class="skill-row">
-                            <div class="skill-label"><span>Risco de Retenção</span> <span>Crítico</span></div>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 100%; background: var(--live-danger);"></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <h2 style="text-align: center; margin-bottom: 20px;">Quadro de Decisão Final</h2>
-        <div style="overflow-x: auto;">
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th width="20%">Critério</th>
-                        <th width="26%" class="winner-col" style="color: var(--live-accent);">PAULA (Recomendada)</th>
-                        <th width="27%">PAULO (Técnico)</th>
-                        <th width="27%">CRISLEY (Sênior)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Foco Principal</strong></td>
-                        <td class="winner-col">Suporte, Processos, Compras</td>
-                        <td>Pesquisa, Campo, Ensaios</td>
-                        <td>Hedge, Derivativos, Gestão</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Residência</strong></td>
-                        <td class="winner-col"><strong>Goiânia (Local)</strong></td>
-                        <td>Rio Verde (Mudança)</td>
-                        <td>Rio Verde (Mudança)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Perfil Comportamental</strong></td>
-                        <td class="winner-col">Organizada / Farmer</td>
-                        <td>Analítico / Científico</td>
-                        <td>Estrategista / Dominante</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Risco Principal</strong></td>
-                        <td class="winner-col"><span style="color:var(--live-accent)">Nenhum (Baixo)</span></td>
-                        <td>Desmotivação com rotina</td>
-                        <td>Alto Custo / Turnover rápido</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Score Final (0-5)</strong></td>
-                        <td class="winner-col"><strong>4.5</strong></td>
-                        <td>3.5</td>
-                        <td>1.0 (Para esta vaga)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div style="text-align: center; margin-top: 50px; color: var(--live-text-muted); font-size: 0.8rem;">
-            <p>Gerado pelo Sistema Especialista Live Consultoria • Protocolo Elite V6.0</p>
-        </div>
-
+    <div class="header">
+        <div class="h-title">Okamoto Corretora</div>
+        <p>Ranking Técnico: Trader de Commodities (Nutrição Animal)</p>
     </div>
 
-    <script>
-        lucide.createIcons();
-    </script>
+    <div class="card top-pick">
+        <div class="badge b-rec">★ 1º LUGAR: PERFIL TRADER / HUNTER</div>
+        <div class="flex-head">
+            <h2>Crisley Gomes Jaime</h2>
+            <div class="role">Ex-Controller Comercial & Trader</div>
+        </div>
+        
+        <p><strong>Veredito:</strong> O único candidato com "calibre" de multinacional. Possui vivência real em <strong>Mesas de Operações, Hedge e Derivativos</strong>. Seu perfil sênior (MBA, Gestão de Risco) é o único capaz de dialogar de igual para igual com Diretores de Indústrias (o público-alvo da vaga).</p>
+        
+        <div class="analysis-grid">
+            <div class="metric-box">
+                <div class="metric-title">POTENCIAL DE RECEITA</div>
+                <div class="metric-val" style="color: var(--accent)">Alto (Perfil Shark)</div>
+                <div style="font-size:0.8rem; margin-top:5px;">Focado em bônus e metas agressivas.</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-title">ADERÊNCIA TÉCNICA</div>
+                <div class="metric-val">100%</div>
+                <div style="font-size:0.8rem; margin-top:5px;">Conhece Grãos, Nutrição e Mercado Futuro.</div>
+            </div>
+        </div>
+
+        <ul class="list-check" style="margin-top: 20px;">
+            <li>Experiência em ambientes de alta pressão (SJC Bioenergia, Cereal Comércio).</li>
+            <li>Conhecimento profundo de precificação e margem (essencial para vender bem).</li>
+            <li>Ambição alinhada à proposta de "Ganhos Ilimitados".</li>
+        </ul>
+
+        <div class="alert-box">
+            <strong>⚠️ Ponto Crítico de Negociação:</strong> O salário fixo (Mínimo) será o maior obstáculo. A estratégia é vender o "Sonho Grande": mostrar a planilha de comissões e como ele pode tirar R$ 15k/20k rapidamente. Ele precisa comprar o projeto como um empreendedor.
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="badge b-risk">2º LUGAR: PERFIL FARMER / JÚNIOR</div>
+        <div class="flex-head">
+            <h2>Paula Gonçalves Silva</h2>
+            <div class="role">Agrônoma / Compras</div>
+        </div>
+        
+        <p><strong>Análise:</strong> Profissional competente e organizada, mas com perfil de <strong>Manutenção (Farmer)</strong>. Em um modelo onde o fixo é mínimo e depende-se 100% da agressividade para sobreviver, ela corre risco de performance inicial.</p>
+        
+        <div class="analysis-grid">
+            <div class="metric-box">
+                <div class="metric-title">PERFIL COMERCIAL</div>
+                <div class="metric-val" style="color: var(--warn)">Conservador</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-title">RISCO DE ADAPTAÇÃO</div>
+                <div class="metric-val">Médio/Alto</div>
+            </div>
+        </div>
+        <ul class="list-check" style="margin-top: 20px;">
+            <li>Ideal se a vaga fosse "Assistente de Mesa" ou "Pós-Vendas".</li>
+            <li>Pode ter dificuldade em abrir "Cold Clients" (Grandes Fábricas).</li>
+        </ul>
+    </div>
+
+    <div class="card" style="opacity: 0.6;">
+        <div class="badge b-no">NÃO RECOMENDADO</div>
+        <div class="flex-head">
+            <h2>Paulo Vinicius Silva Dai</h2>
+            <div class="role">Pesquisador / Campo</div>
+        </div>
+        <p>Foco excessivo em pesquisa e campo. Não possui o drive comercial agressivo necessário para atuar como Trader comissionado.</p>
+    </div>
+
+    <script>lucide.createIcons();</script>
 </body>
 </html>
