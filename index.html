@@ -3,113 +3,434 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dossiê Trader - Okamoto Corretora</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Dossiê Técnico Elite | Okamoto Corretora</title>
+    
+    <!-- Tipografia -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        :root { --bg: #0f172a; --card: #1e293b; --accent: #00e800; --text: #f8fafc; --danger: #ef4444; --warn: #f59e0b; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); padding: 40px 20px; max-width: 900px; margin: 0 auto; }
-        .header { text-align: center; margin-bottom: 50px; border-bottom: 1px solid #334155; padding-bottom: 20px; }
-        .h-title { color: var(--accent); letter-spacing: 2px; text-transform: uppercase; font-size: 1.5rem; font-weight: 800; }
-        
-        .card { background: var(--card); border-radius: 12px; padding: 25px; margin-bottom: 30px; border: 1px solid #334155; position: relative; }
-        .card.top-pick { border: 2px solid var(--accent); box-shadow: 0 0 20px rgba(0,232,0,0.1); }
-        
-        .badge { padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 10px; }
-        .b-rec { background: var(--accent); color: #000; }
-        .b-risk { background: var(--warn); color: #000; }
-        .b-no { background: var(--danger); color: #fff; }
 
-        .flex-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .role { color: #94a3b8; font-size: 0.9rem; }
+    <style>
+        /* =========================================
+           1. NÚCLEO DA IDENTIDADE (TOKENS V6.0)
+           ========================================= */
+        :root {
+            /* --- Atmosfera --- */
+            --live-deep: #06192a;
+            
+            /* --- Superfícies (Refractive Glass) --- */
+            --live-glass: rgba(10, 36, 61, 0.70);
+            --live-glass-hover: rgba(15, 45, 75, 0.85);
+            --glass-blur: blur(16px) saturate(180%);
+
+            /* --- Luz & Ação --- */
+            --live-accent: #00e800;
+            --live-accent-dim: rgba(0, 232, 0, 0.15);
+            --live-danger: #ff3b3b;
+            --live-warning: #f59e0b;
+            
+            /* --- Gradientes Cinéticos --- */
+            --kinetic-gradient: linear-gradient(90deg, #ffffff 0%, #cccccc 50%, #00e800 100%);
+            
+            /* --- Física (Micro-Springs) --- */
+            --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-fluid: cubic-bezier(0.4, 0.0, 0.2, 1);
+
+            /* --- Bordas --- */
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-active: rgba(0, 232, 0, 0.4);
+        }
+
+        /* =========================================
+           2. RESET & ESTRUTURA
+           ========================================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--live-deep);
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            color: #f1f5f9;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* =========================================
+           3. HEADER CINÉTICO
+           ========================================= */
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 60px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-live {
+            max-width: 180px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(0, 232, 0, 0.2));
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: var(--kinetic-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            animation: gradientShift 8s infinite linear;
+            background-size: 200%;
+        }
+
+        .subtitle {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            color: #94a3b8;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* =========================================
+           4. COMPONENTES ELITE (CARDS & FÍSICA)
+           ========================================= */
+        .glass-panel {
+            background: var(--live-glass);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s var(--spring-bounce), box-shadow 0.4s var(--ease-fluid);
+        }
+
+        /* Efeito Flashlight (Desktop) */
+        @media (hover: hover) {
+            .glass-panel::before {
+                content: '';
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: radial-gradient(
+                    800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                    rgba(255, 255, 255, 0.06), 
+                    transparent 40%
+                );
+                z-index: 0;
+                opacity: 0;
+                transition: opacity 0.3s;
+                pointer-events: none;
+            }
+            .glass-panel:hover::before { opacity: 1; }
+            .glass-panel:hover {
+                transform: translateY(-5px) scale(1.01);
+                border-color: var(--border-active);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            }
+        }
+
+        .panel-content { position: relative; z-index: 1; }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .badge-elite { background: var(--live-accent); color: #06192a; box-shadow: 0 0 15px var(--live-accent-dim); }
+        .badge-warn { background: var(--live-warning); color: #06192a; }
+        .badge-danger { background: rgba(255, 59, 59, 0.1); color: var(--live-danger); border: 1px solid var(--live-danger); }
+
+        /* =========================================
+           5. TIPOGRAFIA ANALÍTICA
+           ========================================= */
+        .analysis-text {
+            font-family: 'Merriweather', serif;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+            margin-top: 15px;
+        }
+        .highlight { color: #fff; font-weight: 700; border-bottom: 1px solid var(--live-accent); }
+
+        /* =========================================
+           6. GRID DE DADOS (ATOMS & MOLECULES)
+           ========================================= */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .data-point {
+            background: rgba(6, 25, 42, 0.4);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 2px solid var(--border-subtle);
+        }
+        .data-label { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .data-value { font-size: 1rem; font-weight: 600; color: #f8fafc; display: flex; align-items: center; gap: 8px; }
+
+        /* Listas Técnicas */
+        .tech-list { list-style: none; margin-top: 15px; }
+        .tech-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+        .tech-list li i { color: var(--live-accent); min-width: 16px; margin-top: 4px; }
+
+        /* =========================================
+           7. TABELA COMPARATIVA (GLASS TABLE)
+           ========================================= */
+        .comparison-wrapper { overflow-x: auto; margin-top: 40px; border-radius: 12px; border: 1px solid var(--border-subtle); }
+        table { width: 100%; border-collapse: collapse; background: rgba(6, 25, 42, 0.6); }
+        th, td { padding: 18px 24px; text-align: left; border-bottom: 1px solid var(--border-subtle); }
+        th { font-size: 0.75rem; text-transform: uppercase; color: #94a3b8; font-weight: 600; letter-spacing: 1px; }
+        td { font-size: 0.9rem; }
         
-        .analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
-        @media(max-width: 700px) { .analysis-grid { grid-template-columns: 1fr; } }
+        .winner-col { background: linear-gradient(to bottom, rgba(0,232,0,0.05), transparent); border-left: 1px solid var(--live-accent-dim); border-right: 1px solid var(--live-accent-dim); }
+        .winner-text { color: var(--live-accent); font-weight: 700; }
+
+        /* =========================================
+           8. FOOTER
+           ========================================= */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: auto;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+        footer a { color: #64748b; text-decoration: none; transition: color 0.3s; }
+        footer a:hover { color: var(--live-accent); }
+
+        /* Animações */
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
         
-        .metric-box { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; }
-        .metric-title { font-size: 0.8rem; color: #94a3b8; margin-bottom: 5px; }
-        .metric-val { font-size: 1.1rem; font-weight: 600; }
-        
-        .list-check li { list-style: none; margin-bottom: 8px; padding-left: 20px; position: relative; font-size: 0.9rem; }
-        .list-check li::before { content: "✓"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
-        
-        .alert-box { background: rgba(245, 158, 11, 0.1); border-left: 4px solid var(--warn); padding: 15px; margin-top: 20px; font-size: 0.9rem; color: #e2e8f0; }
+        /* Mobile Thumb Zone */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .glass-panel { padding: 20px; }
+            .data-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="h-title">Okamoto Corretora</div>
-        <p>Ranking Técnico: Trader de Commodities (Nutrição Animal)</p>
-    </div>
-
-    <div class="card top-pick">
-        <div class="badge b-rec">★ 1º LUGAR: PERFIL TRADER / HUNTER</div>
-        <div class="flex-head">
-            <h2>Crisley Gomes Jaime</h2>
-            <div class="role">Ex-Controller Comercial & Trader</div>
-        </div>
+    <div class="container">
         
-        <p><strong>Veredito:</strong> O único candidato com "calibre" de multinacional. Possui vivência real em <strong>Mesas de Operações, Hedge e Derivativos</strong>. Seu perfil sênior (MBA, Gestão de Risco) é o único capaz de dialogar de igual para igual com Diretores de Indústrias (o público-alvo da vaga).</p>
-        
-        <div class="analysis-grid">
-            <div class="metric-box">
-                <div class="metric-title">POTENCIAL DE RECEITA</div>
-                <div class="metric-val" style="color: var(--accent)">Alto (Perfil Shark)</div>
-                <div style="font-size:0.8rem; margin-top:5px;">Focado em bônus e metas agressivas.</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-title">ADERÊNCIA TÉCNICA</div>
-                <div class="metric-val">100%</div>
-                <div style="font-size:0.8rem; margin-top:5px;">Conhece Grãos, Nutrição e Mercado Futuro.</div>
-            </div>
-        </div>
+        <!-- Header -->
+        <header>
+            <img src="https://raw.githubusercontent.com/Clebito2/ConsultoriaLive/main/Logo%20live%20oficial-21.png" alt="Live Consultoria" class="logo-live">
+            <h1>PARECER TÉCNICO ELITE</h1>
+            <p class="subtitle">Análise de Aderência: Trader Commodities (Okamoto Corretora)</p>
+        </header>
 
-        <ul class="list-check" style="margin-top: 20px;">
-            <li>Experiência em ambientes de alta pressão (SJC Bioenergia, Cereal Comércio).</li>
-            <li>Conhecimento profundo de precificação e margem (essencial para vender bem).</li>
-            <li>Ambição alinhada à proposta de "Ganhos Ilimitados".</li>
-        </ul>
+        <!-- CANDIDATO 01 (VENCEDOR) -->
+        <div class="glass-panel" style="border-color: var(--live-accent);">
+            <div class="panel-content">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px;">
+                    <div>
+                        <div class="badge badge-elite" style="margin-bottom: 10px;">
+                            <i data-lucide="trophy" size="14"></i> 1º Ranking (Hunter/Trader)
+                        </div>
+                        <h2 style="font-size: 1.8rem; font-weight: 700; color: #fff;">Crisley Gomes Jaime</h2>
+                        <p style="color: var(--live-accent); font-size: 0.9rem; font-weight: 500;">
+                            Ex-Controller & Gestor Comercial | Sênior
+                        </p>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-size: 2.5rem; font-weight: 800; color: var(--live-accent); line-height: 1;">98%</span>
+                        <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Score Elite</div>
+                    </div>
+                </div>
 
-        <div class="alert-box">
-            <strong>⚠️ Ponto Crítico de Negociação:</strong> O salário fixo (Mínimo) será o maior obstáculo. A estratégia é vender o "Sonho Grande": mostrar a planilha de comissões e como ele pode tirar R$ 15k/20k rapidamente. Ele precisa comprar o projeto como um empreendedor.
-        </div>
-    </div>
+                <div class="analysis-text">
+                    O único candidato com <span class="highlight">lastro executivo</span> para a promessa de "ganhos ilimitados". Enquanto os concorrentes possuem perfis de suporte ou técnico, Crisley fala a língua do <strong>Smart Money</strong>. Sua vivência na <em>Cargill</em> e <em>SJC Bioenergia</em> gerindo hedge e derivativos o qualifica para negociar com Diretores de Indústrias multinacionais, que é o alvo da Okamoto.
+                </div>
 
-    <div class="card">
-        <div class="badge b-risk">2º LUGAR: PERFIL FARMER / JÚNIOR</div>
-        <div class="flex-head">
-            <h2>Paula Gonçalves Silva</h2>
-            <div class="role">Agrônoma / Compras</div>
-        </div>
-        
-        <p><strong>Análise:</strong> Profissional competente e organizada, mas com perfil de <strong>Manutenção (Farmer)</strong>. Em um modelo onde o fixo é mínimo e depende-se 100% da agressividade para sobreviver, ela corre risco de performance inicial.</p>
-        
-        <div class="analysis-grid">
-            <div class="metric-box">
-                <div class="metric-title">PERFIL COMERCIAL</div>
-                <div class="metric-val" style="color: var(--warn)">Conservador</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-title">RISCO DE ADAPTAÇÃO</div>
-                <div class="metric-val">Médio/Alto</div>
+                <div class="data-grid">
+                    <div class="data-point">
+                        <div class="data-label">Experiência Crítica (CV)</div>
+                        <ul class="tech-list" style="margin-top: 5px;">
+                            <li><i data-lucide="check"></i> <strong>SJC Bioenergia:</strong> Meta anual de 600k toneladas.</li>
+                            <li><i data-lucide="check"></i> <strong>Cereal Comércio:</strong> Gestão de Hedge (CBOT) e Derivativos.</li>
+                            <li><i data-lucide="check"></i> <strong>Financeiro:</strong> Domínio de NDF, Dólar BM&F e Margem.</li>
+                        </ul>
+                    </div>
+                    <div class="data-point">
+                        <div class="data-label">Análise de Risco x Retorno</div>
+                        <div class="data-value" style="color: var(--live-accent); margin-bottom: 5px;">
+                            <i data-lucide="trending-up"></i> Alto Potencial Financeiro
+                        </div>
+                        <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.4;">
+                            Risco: Aceite do Fixo (Mínimo). <br>
+                            Mitigação: Vender o projeto como "Empreendedorismo Corporativo" com upside real de R$ 20k+.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-        <ul class="list-check" style="margin-top: 20px;">
-            <li>Ideal se a vaga fosse "Assistente de Mesa" ou "Pós-Vendas".</li>
-            <li>Pode ter dificuldade em abrir "Cold Clients" (Grandes Fábricas).</li>
-        </ul>
-    </div>
 
-    <div class="card" style="opacity: 0.6;">
-        <div class="badge b-no">NÃO RECOMENDADO</div>
-        <div class="flex-head">
-            <h2>Paulo Vinicius Silva Dai</h2>
-            <div class="role">Pesquisador / Campo</div>
+        <!-- CANDIDATO 02 (BACKUP) -->
+        <div class="glass-panel" style="border-left: 4px solid var(--live-warning);">
+            <div class="panel-content">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div class="badge badge-warn" style="margin-bottom: 10px;">
+                            <i data-lucide="shield"></i> 2º Lugar (Perfil Farmer)
+                        </div>
+                        <h3 style="font-size: 1.4rem; font-weight: 600; color: #e2e8f0;">Paula Gonçalves Silva</h3>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Agrônoma | Compras & Suporte</p>
+                    </div>
+                    <span style="font-size: 1.5rem; font-weight: 700; color: #94a3b8; opacity: 0.5;">75%</span>
+                </div>
+
+                <div class="analysis-text">
+                    Perfil sólido para <strong>Backoffice/Farmer</strong>, mas carece da agressividade "Hunter" para o modelo de comissão pura. Seu CV destaca organização (Digisat, Pedidos), não a abertura de novos mercados de alto calibre.
+                </div>
+
+                <div class="data-grid">
+                    <div class="data-point">
+                        <div class="data-label">Pontos Fortes (CV)</div>
+                        <ul class="tech-list">
+                            <li><i data-lucide="map-pin"></i> Reside em Goiânia (Custo Zero).</li>
+                            <li><i data-lucide="file-text"></i> Organizada: Gestão de planilhas e sistemas.</li>
+                        </ul>
+                    </div>
+                    <div class="data-point">
+                        <div class="data-label">Motivo do Rebaixamento</div>
+                        <p style="font-size: 0.9rem; color: #cbd5e1; margin-top: 5px;">
+                            Experiência recente em "Compras" e "Apoio". Pode não suportar a pressão de "Salário Mínimo + Meta Agressiva".
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p>Foco excessivo em pesquisa e campo. Não possui o drive comercial agressivo necessário para atuar como Trader comissionado.</p>
+
+        <!-- CANDIDATO 03 (NÃO RECOMENDADO) -->
+        <div class="glass-panel" style="border-left: 4px solid var(--live-danger); opacity: 0.8;">
+            <div class="panel-content">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div class="badge badge-danger" style="margin-bottom: 10px;">
+                            <i data-lucide="x-circle"></i> Não Recomendado
+                        </div>
+                        <h3 style="font-size: 1.4rem; font-weight: 600; color: #cbd5e1;">Paulo Vinicius Silva Dai</h3>
+                        <p style="color: #64748b; font-size: 0.9rem;">Pesquisador | Perfil Acadêmico</p>
+                    </div>
+                    <span style="font-size: 1.5rem; font-weight: 700; color: var(--live-danger); opacity: 0.5;">40%</span>
+                </div>
+
+                <div class="analysis-text">
+                    Incompatibilidade de DNA. O CV é denso em termos acadêmicos ("Fitopatologia", "Ensaios", "R Statistics"). Para uma vaga comercial agressiva, o risco de desmotivação (Boreout) é crítico. Além disso, reside em Rio Verde.
+                </div>
+            </div>
+        </div>
+
+        <!-- TABELA COMPARATIVA -->
+        <h3 style="margin-top: 50px; margin-bottom: 20px; font-size: 1.2rem; color: var(--live-accent); letter-spacing: 1px; text-transform: uppercase;">
+            <i data-lucide="layers" style="vertical-align: middle;"></i> Matriz de Decisão
+        </h3>
+        
+        <div class="comparison-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="25%">Critério</th>
+                        <th width="25%" class="winner-col" style="color: var(--live-accent);">CRISLEY (Hunter)</th>
+                        <th width="25%">PAULA (Farmer)</th>
+                        <th width="25%">PAULO (Técnico)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Senioridade</strong></td>
+                        <td class="winner-col winner-text">Gestor / Trader Sênior</td>
+                        <td>Pleno / Assistente</td>
+                        <td>Júnior / Pesquisador</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Foco Financeiro</strong></td>
+                        <td class="winner-col winner-text">Hedge, Derivativos, Margem</td>
+                        <td>Compras, Cotações</td>
+                        <td>Estatística, Ensaios</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fit com Multinacionais</strong></td>
+                        <td class="winner-col winner-text">Alto (Cargill, SJC)</td>
+                        <td>Médio (Revendas Locais)</td>
+                        <td>Baixo (Foco Campo)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Localização</strong></td>
+                        <td class="winner-col">Rio Verde (Mudança necessária)</td>
+                        <td style="color: var(--live-accent);">Goiânia (Local)</td>
+                        <td>Rio Verde (Mudança)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 Live Consultoria Empresarial. Documento Confidencial.</p>
+            <p style="margin-top: 10px;">
+                <a href="mailto:cleberdonato@ecossistemalive.com.br">₢ Powered by Cléber Donato.</a>
+            </p>
+        </footer>
+
     </div>
 
-    <script>lucide.createIcons();</script>
+    <!-- Scripts de Interatividade (Física V6.0) -->
+    <script>
+        // Inicializa Ícones
+        lucide.createIcons();
+
+        // Lógica do Efeito Flashlight (Mouse Tracking)
+        const cards = document.querySelectorAll('.glass-panel');
+
+        document.addEventListener('mousemove', (e) => {
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Apenas atualiza se o mouse estiver próximo ou dentro (Performance)
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
 </body>
 </html>
